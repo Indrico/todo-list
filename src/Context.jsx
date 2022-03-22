@@ -1,14 +1,15 @@
 import React, { useState, useContext } from 'react';
+import { useEffect } from 'react';
 
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [category, setCategory] = useState('all');
-  const [data, setData] = useState(
-    [
-      {title: 'Bloom', id: 1, status: 'active'},
-      {title: 'Exe', id: 2, status: 'completed'}
-    ]);  
+  const [data, setData] = useState(JSON.parse(localStorage.getItem('data')));
+
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+  }, [data])
 
   return (
     <AppContext.Provider

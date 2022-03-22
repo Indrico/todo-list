@@ -6,13 +6,23 @@ export const Form = () => {
   const { data, setData } = useGlobalContext();
 
   const handleSubmit = (value) => {
-    const todo = {title: value, id: new Date().getTime().toString(), status: 'active'}
-    setData([ ...data, todo ]);
+    const todo = {
+      title: value,
+      id: new Date().getTime().toString(),
+      status: 'active',
+    };
+    setData([...data, todo]);
     setInput('');
-  }
+  };
 
   return (
-    <form className="flex space-x-4 mb-2">
+    <form
+      className="flex space-x-4 mb-2"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit(input);
+      }}
+    >
       <input
         type="text"
         placeholder="Add Details"
