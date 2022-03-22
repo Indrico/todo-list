@@ -5,7 +5,7 @@ const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [category, setCategory] = useState('all');
-  const [data, setData] = useState(JSON.parse(localStorage.getItem('data')));
+  const [data, setData] = useState(JSON.parse(localStorage.getItem('data')) ?? []);
 
   const handleDelete = (id) => {
     let tempData = data.filter((item) => item.id !== id)
