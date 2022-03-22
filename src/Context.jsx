@@ -7,6 +7,11 @@ export const AppProvider = ({ children }) => {
   const [category, setCategory] = useState('all');
   const [data, setData] = useState(JSON.parse(localStorage.getItem('data')));
 
+  const handleDelete = (id) => {
+    let tempData = data.filter((item) => item.id !== id)
+    setData(tempData);
+  }
+
   useEffect(() => {
     localStorage.setItem('data', JSON.stringify(data));
   }, [data])
@@ -17,7 +22,8 @@ export const AppProvider = ({ children }) => {
         category,
         setCategory,
         data,
-        setData
+        setData,
+        handleDelete
       }}
     >
       {children}

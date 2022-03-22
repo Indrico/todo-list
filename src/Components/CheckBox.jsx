@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { FiTrash } from 'react-icons/fi';
 
 export const Checkbox = ({ id, status, title }) => {
-  const { data, setData, category } = useGlobalContext();
+  const { data, setData, category, handleDelete } = useGlobalContext();
   const [isChecked, setIsChecked] = useState(
     status === 'completed' ? true : false
   );
@@ -43,7 +43,7 @@ export const Checkbox = ({ id, status, title }) => {
           {title}
         </label>
       </div>
-      {category === 'complete' && <FiTrash />}
+      {category === 'complete' && <FiTrash className="cursor-pointer" onClick={() => handleDelete(id)}/>}
     </div>
   );
 };
