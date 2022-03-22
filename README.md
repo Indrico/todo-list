@@ -42,6 +42,7 @@
 ### Built With
 - [Vite](https://vitejs.dev/)
 - [React](https://reactjs.org/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 - [Tailwind](https://tailwindcss.com/)
 
 ## Features
